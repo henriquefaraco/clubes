@@ -14,7 +14,7 @@ public class Conexao {
        
         Connection con = null;
         String url = "jdbc:mysql://localhost/";
-        String bd = "exemplojava";
+        String bd = "clube";
         String user = "root";
         String pass = "";
       

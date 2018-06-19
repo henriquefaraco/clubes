@@ -85,7 +85,7 @@ public class TelaContratar extends javax.swing.JFrame {
 
         salario.setText("Salário (R$)");
 
-        precoCompra.setText("Preço de Compra");
+        precoCompra.setText("Preço de Compra (R$)");
 
         tempoContrato.setText("Meses de Contrato");
 
@@ -127,7 +127,7 @@ public class TelaContratar extends javax.swing.JFrame {
 
         habilidade.setText("Habilidade");
 
-        peso.setText("Peso");
+        peso.setText("Peso (kg)");
 
         pesoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class TelaContratar extends javax.swing.JFrame {
             }
         });
 
-        estatura.setText("Altura");
+        estatura.setText("Altura (m)");
 
         estaturaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +220,7 @@ public class TelaContratar extends javax.swing.JFrame {
                 .addGap(66, 66, 66))
         );
 
-        rescisao.setText("Multa de rescisão");
+        rescisao.setText("Multa de rescisão (R$)");
 
         rescisaoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,8 +257,8 @@ public class TelaContratar extends javax.swing.JFrame {
                                         .addGap(20, 20, 20)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tempoContratoText)
-                                            .addComponent(salarioText, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                            .addComponent(precoCompraText, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                            .addComponent(salarioText, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                            .addComponent(precoCompraText, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                                             .addComponent(rescisaoText))))))))
                 .addContainerGap())
         );
@@ -318,13 +318,13 @@ public class TelaContratar extends javax.swing.JFrame {
                 stmt.setDouble(3, Double.valueOf(estaturaText.getText()));
                 stmt.setDouble(4, Double.valueOf(salarioText.getText()));
                 stmt.setInt(5, Integer.valueOf(tempoContratoText.getText()));
-                stmt.setString(6, pernaDominanteText.getText());
+                stmt.setString(6, pernaDominanteText.getText().toLowerCase());
                 stmt.setInt(7, (int) valorVel.getValue());
                 stmt.setInt(8, (int) valorHab.getValue());
                 stmt.setInt(9, (int) valorRes.getValue());
                 stmt.setString(10, posicaoOrigemText.getText());
-                stmt.setString(11, rescisaoText.getText());
-                stmt.setString(12, precoCompraText.getText());
+                stmt.setDouble(11, Double.valueOf(rescisaoText.getText()));
+                stmt.setDouble(12, Double.valueOf(precoCompraText.getText()));
                 stmt.executeUpdate();
                 stmt.close();
             }
@@ -341,8 +341,8 @@ public class TelaContratar extends javax.swing.JFrame {
             valorVel.setValue(0);
             posicaoOrigemText.setText("");
             rescisaoText.setText(null);
-            tempoContratoText.setText("");
-            precoCompraText.setText("");
+            tempoContratoText.setText(null);
+            precoCompraText.setText(null);
         } catch (SQLException ex) {
         System.out.println("Erro"+ex);
         } 

@@ -1,40 +1,15 @@
 
 package clubes.model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class Jogador extends Pessoa{
     
     private int velocidade;
     private int resistencia;
     private int habilidade;
-
-    public int getVelocidade() {
-        
-        return velocidade;
-    }
-
-    public int getResistencia() {
-        return resistencia;
-    }
-
-    public int getHabilidade() {
-        return this.habilidade;
-        
-    }
-
-    public void setVelocidade(int velocidade) {
-        this.velocidade = velocidade;
-    }
-
-    public void setResistencia(int resistencia) {
-        this.resistencia = resistencia;
-    }
-
-    public void setHabilidade(int id) {
-        String sql = "SELECT habilidade FROM jogador WHERE id = "+id+";";
-        this.habilidade = Integer.parseInt(sql);
-    }
-    
-    
     private double salario;
     private double multa;
     private int tempoContrato;
@@ -53,7 +28,101 @@ public class Jogador extends Pessoa{
     }
     public Jogador() {
     }
+        public int getVelocidade(int id) {
+        Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql ="SELECT velocidade FROM jogador WHERE id = "+id+";";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+            int teste = rs.getInt("velocidade");
+            this.velocidade = teste;
+                System.out.println(teste);
+            }
+    
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return this.velocidade;
+    }
 
+    public int getResistencia(int id) {
+        Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql ="SELECT resistencia FROM jogador WHERE id = "+id+";";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+            int teste = rs.getInt("resistencia");
+            this.resistencia = teste;
+                System.out.println(teste);
+            }
+    
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return this.resistencia;
+    }
+    public int getHabilidade(int id){
+        Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql ="SELECT habilidade FROM jogador WHERE id = "+id+";";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+            int teste = rs.getInt("habilidade");
+            this.habilidade = teste;
+                System.out.println(teste);
+            }
+    
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return this.habilidade;
+    }
+
+    public void setVelocidade(int id) {
+                Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql = "UPDATE jogador SET habilidade = "+this.velocidade+" where id = "+id+";";
+            stmt.executeUpdate(sql);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void setResistencia(int id) {
+        Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql = "UPDATE jogador SET habilidade = "+this.resistencia+" where id = "+id+";";
+            stmt.executeUpdate(sql);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void  setHabilidade(int id) {
+        Connection con;
+        try {
+            con = Conexao.conecta();
+            Statement stmt = con.createStatement();
+            String sql = "UPDATE jogador SET habilidade = "+this.habilidade+" where id = "+id+";";
+            stmt.executeUpdate(sql);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     @Override
     public void engordar() {
         double massaCorporal;
@@ -76,34 +145,25 @@ public class Jogador extends Pessoa{
         massaCorporal = this.getPeso()-umPeso;
         this.setPeso(massaCorporal);
     }
-    public void treinarVelocidade(){
-        if(this.velocidade < 6){
-            int velNova = this.velocidade++;
-        }else{
-            int velNova = this.velocidade;
-        }
+    public void treinarVelocidade(int id){
+        int novaVl = getVelocidade(id);
+        novaVl++;
+        this.velocidade = novaVl;
+        setVelocidade(id);
     }    
-    public void treinarResistencia(){
-        if(this.resistencia < 6){
-            int velNova = this.resistencia++;
-        }else{
-            int velNova = this.resistencia;
-        }
+    public void treinarResistencia(int id){
+        int novaRs = getResistencia(id);
+        novaRs++;
+        this.resistencia = novaRs;
+        setResistencia(id);
     }
-    public String treinarHabilidade(int id){
-        int novaHb = this.getHabilidade()+1;
-        String sql = "UPDATE jogador SET habilidade = "+novaHb+" where id = "+id+";";
+    public void treinarHabilidade(int id){
         
-        
-       /* if(this.habilidade < 6){
-            int velNova = this.habilidade++;
-            th = "UPDATE jogador SET habilidade = "+this.habilidade+" where id = "+id+";";
-        }else
-            this.habilidade= this.habilidade;
-            th = "UPDATE jogador SET habilidade = "+this.habilidade+" where id = "+id+";";
-        */return sql;
-    }    
-    
+        int novaHb = getHabilidade(id);
+        novaHb++;
+        this.habilidade = novaHb;
+        setHabilidade(id);
+    }
     public String demitir(int id){
        String demite = "DELETE FROM jogador WHERE id ="+id+";"; 
        return demite;

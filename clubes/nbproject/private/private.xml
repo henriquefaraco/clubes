@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/view/TelaPrincipal.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/view/TelaContratar.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/view/TelaConsultar.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/Clubes.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/model/Conexao.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/model/Jogador.java</file>
-            <file>file:/D:/Henrique/ifsc/gti-poo/trabalho-final/clubes/src/clubes/model/Pessoa.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/view/TelaConsultar.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/model/Conexao.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/view/TelaContratar.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/view/TelaPrincipal.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/Clubes.java</file>
+            <file>file:/D:/Henrique/clubes/clubes/src/clubes/model/Jogador.java</file>
         </group>
     </open-files>
 </project-private>

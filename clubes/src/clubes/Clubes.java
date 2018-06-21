@@ -2,6 +2,7 @@
 package clubes;
 
 import clubes.model.Conexao;
+import clubes.model.Jogador;
 import clubes.view.TelaPrincipal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ public class Clubes {
        
         TelaPrincipal abertura = new TelaPrincipal();
         abertura.setVisible(true);
-        
+       
     }
     
 }

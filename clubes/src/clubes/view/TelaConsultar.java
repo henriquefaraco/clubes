@@ -29,8 +29,8 @@ public class TelaConsultar extends javax.swing.JFrame {
         initComponents();
         jPanel1.setVisible(false);
         jButton7.setVisible(false);
-        
-         Connection conexao;
+               
+        Connection conexao;
         try {
             conexao=Conexao.conecta();
             
@@ -49,14 +49,17 @@ public class TelaConsultar extends javax.swing.JFrame {
                     rs.getString("posicao"),
                     rs.getString("salario"), 
                     rs.getString("rescisao"),
-                    rs.getString("validade_contrato")
-                    }
+                    rs.getString("validade_contrato"),
+                    rs.getString("habilidade"),
+                    rs.getString("velocidade"),
+                    rs.getString("resistencia")
+                            }
                 );
             }
             stmt.close();
             conexao.close();
             
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex);
         }
          
@@ -84,8 +87,6 @@ public class TelaConsultar extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,13 +106,24 @@ public class TelaConsultar extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cód", "Nome", "Posição", "Salário", "Multa", "Tempo de Contrato"
+                "Cód", "Nome", "Posição", "Salário", "Multa", "Tempo de Contrato", "Habilidade", "Velocidade", "Resistência"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(8);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(85);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(30);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(20);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(20);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(60);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(15);
+            jTable1.getColumnModel().getColumn(7).setPreferredWidth(15);
+            jTable1.getColumnModel().getColumn(8).setPreferredWidth(15);
+        }
 
         jButton1.setText("CONSULTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,30 +167,17 @@ public class TelaConsultar extends javax.swing.JFrame {
             }
         });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "Velocidade", "Habilidade", "Resistência"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)))
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,11 +188,10 @@ public class TelaConsultar extends javax.swing.JFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
-        jButton7.setText("Cancelar Treino");
+        jButton7.setText("Concluir Treino");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -205,27 +203,30 @@ public class TelaConsultar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1)))
+                                .addComponent(jTextField1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,23 +234,20 @@ public class TelaConsultar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
-                .addGap(66, 66, 66)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7))
+                .addGap(27, 27, 27)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -273,8 +271,7 @@ public class TelaConsultar extends javax.swing.JFrame {
             
              //criando parametro para obter resposta do sql e mostrar na tela
                 ResultSet resposta= stmt.executeQuery();
-            
-            
+                        
             //criar modelo da tabela para podermos mostrar a resposta na tela
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             
@@ -288,7 +285,11 @@ public class TelaConsultar extends javax.swing.JFrame {
                     resposta.getString("posicao"),
                     resposta.getString("salario"), 
                     resposta.getString("rescisao"),
-                    resposta.getString("validade_contrato")
+                    resposta.getString("validade_contrato"),
+                    resposta.getString("habilidade"),
+                    resposta.getString("velocidade"),
+                    resposta.getString("resistencia")
+                    
                                        
                     }
                 );
@@ -296,7 +297,7 @@ public class TelaConsultar extends javax.swing.JFrame {
             stmt.close();
             conexao.close();
             
-            } catch (SQLException ex) {
+            }catch (SQLException ex) {
                 System.out.println("Erro conexão: "+ex);
             }            
 
@@ -316,7 +317,8 @@ public class TelaConsultar extends javax.swing.JFrame {
             System.out.println(id);
 
             stmt.close();
-
+            
+            
             TelaConsultar tela2 = new TelaConsultar();
             tela2.setVisible(true);
 
@@ -343,20 +345,7 @@ public class TelaConsultar extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(sql);
             int linha = this.jTable1.getSelectedRow();
             int id = Integer.parseInt(this.jTable1.getValueAt(linha,0).toString());
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-            
-            model.setNumRows(0);
-            
-             while (rs.next()) {
-            model.addRow(
-                    new Object[]{
-                    rs.getString("velocidade"), 
-                    rs.getString("habilidade"),
-                    rs.getString("resistencia"),
-                    
-                    }
-                );
-            }
+        
             stmt.close();
             conexao.close();                
         
@@ -370,12 +359,13 @@ public class TelaConsultar extends javax.swing.JFrame {
         try{
             conexao = Conexao.conecta();
             Jogador jogador = new Jogador();
-            Statement stmt = conexao.createStatement();
-            
             
             int linha = this.jTable1.getSelectedRow();
             int id = Integer.parseInt(this.jTable1.getValueAt(linha, 0).toString());
             jogador.treinarHabilidade(id);
+            
+            TelaConsultar tela = new TelaConsultar();
+            tela.setVisible(true);
             
         }catch(SQLException ex){
             System.out.println("Erro: "+ex);
@@ -398,16 +388,14 @@ public class TelaConsultar extends javax.swing.JFrame {
         try{
             conexao = Conexao.conecta();
             Jogador jogador = new Jogador();
-            Statement stmt = conexao.createStatement();
-            
             
             int linha = this.jTable1.getSelectedRow();
             int id = Integer.parseInt(this.jTable1.getValueAt(linha, 0).toString());
-            jogador.treinarVelocidade(id);
+            jogador.treinarVelocidade(id);    
             
+            TelaConsultar tela = new TelaConsultar();
+            tela.setVisible(true);
             
-            
-            stmt.close();
         }catch(SQLException ex){
             System.out.println("Erro: "+ex);
             
@@ -419,15 +407,15 @@ public class TelaConsultar extends javax.swing.JFrame {
         Connection conexao;
         try{
             conexao = Conexao.conecta();
-            Jogador jogador = new Jogador();
-            Statement stmt = conexao.createStatement();
-            
+            Jogador jogador = new Jogador();           
             
             int linha = this.jTable1.getSelectedRow();
             int id = Integer.parseInt(this.jTable1.getValueAt(linha, 0).toString());
             jogador.treinarResistencia(id);
             
-                        
+            TelaConsultar tela = new TelaConsultar();
+            tela.setVisible(true);
+            
         }catch(SQLException ex){
             System.out.println("Erro: "+ex);
             
@@ -481,9 +469,7 @@ public class TelaConsultar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

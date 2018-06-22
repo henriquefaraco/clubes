@@ -60,8 +60,8 @@
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="tempoContratoText" max="32767" attributes="0"/>
-                                          <Component id="salarioText" pref="74" max="32767" attributes="0"/>
-                                          <Component id="precoCompraText" pref="74" max="32767" attributes="0"/>
+                                          <Component id="salarioText" pref="69" max="32767" attributes="0"/>
+                                          <Component id="precoCompraText" pref="69" max="32767" attributes="0"/>
                                           <Component id="rescisaoText" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -220,26 +220,21 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="valorHab" max="32767" attributes="0"/>
                               <Component id="valorVel" max="32767" attributes="0"/>
-                              <Component id="valorRes" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="valorRes" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="peso" min="-2" max="-2" attributes="0"/>
-                                      <Component id="estatura" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="pesoText" pref="79" max="32767" attributes="0"/>
-                                      <Component id="estaturaText" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="peso" min="-2" max="-2" attributes="0"/>
+                                  <Component id="estatura" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="pernaDominante" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pernaDominanteText" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="pernaDominante" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pernaDominanteText" max="32767" attributes="0"/>
+                              <Component id="pesoText" pref="79" max="32767" attributes="0"/>
+                              <Component id="estaturaText" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -285,7 +280,7 @@
         <Component class="javax.swing.JSpinner" name="valorVel">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="5" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="99" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
@@ -307,7 +302,7 @@
         <Component class="javax.swing.JSpinner" name="valorRes">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="5" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="99" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
@@ -319,7 +314,7 @@
         <Component class="javax.swing.JSpinner" name="valorHab">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="5" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="99" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>

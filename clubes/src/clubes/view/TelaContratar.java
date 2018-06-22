@@ -23,7 +23,9 @@ public class TelaContratar extends javax.swing.JFrame {
      */
     public TelaContratar() {
         initComponents();
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +109,7 @@ public class TelaContratar extends javax.swing.JFrame {
         painel.setToolTipText("");
         painel.setName("Capacidades do jogador"); // NOI18N
 
-        valorVel.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        valorVel.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
 
         velocidade.setText("Velocidade");
 
@@ -119,11 +121,11 @@ public class TelaContratar extends javax.swing.JFrame {
             }
         });
 
-        valorRes.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        valorRes.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
 
         posicaoOrigem.setText("Posição de Origem:");
 
-        valorHab.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        valorHab.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
 
         habilidade.setText("Habilidade");
 
@@ -175,21 +177,18 @@ public class TelaContratar extends javax.swing.JFrame {
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(valorHab)
                             .addComponent(valorVel)
-                            .addComponent(valorRes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(valorRes))
                         .addGap(18, 18, 18)
                         .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelLayout.createSequentialGroup()
-                                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(peso)
-                                    .addComponent(estatura))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pesoText, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                    .addComponent(estaturaText)))
-                            .addGroup(painelLayout.createSequentialGroup()
-                                .addComponent(pernaDominante)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pernaDominanteText)))))
+                            .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(peso)
+                                .addComponent(estatura))
+                            .addComponent(pernaDominante))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pernaDominanteText)
+                            .addComponent(pesoText, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(estaturaText))))
                 .addContainerGap())
         );
         painelLayout.setVerticalGroup(
@@ -257,8 +256,8 @@ public class TelaContratar extends javax.swing.JFrame {
                                         .addGap(20, 20, 20)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tempoContratoText)
-                                            .addComponent(salarioText, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                                            .addComponent(precoCompraText, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                            .addComponent(salarioText, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                            .addComponent(precoCompraText, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                                             .addComponent(rescisaoText))))))))
                 .addContainerGap())
         );
@@ -311,7 +310,7 @@ public class TelaContratar extends javax.swing.JFrame {
         try {
             conexao = Conexao.conecta();
             
-            String sql = "INSERT INTO jogador(nome, peso, estatura, salario, validade_contrato, perna_dominante, velocidade, resistencia, habilidade, posicao, rescisao, precoCompra) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO jogador(nome, peso, estatura, salario, validade_contrato, perna_dominante, velocidade, habilidade, resistencia,  posicao, rescisao, precoCompra) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
             try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
                 stmt.setString(1, nomeText.getText());
                 stmt.setDouble(2, Double.valueOf(pesoText.getText()));
@@ -365,6 +364,11 @@ public class TelaContratar extends javax.swing.JFrame {
         rescisaoText.setText(null);
         tempoContratoText.setText("");
         precoCompraText.setText("");
+        
+        TelaPrincipal tela2 = new TelaPrincipal();
+        tela2.setVisible(true);
+              
+      
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void posicaoOrigemTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicaoOrigemTextActionPerformed

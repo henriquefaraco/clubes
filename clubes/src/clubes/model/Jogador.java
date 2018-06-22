@@ -89,7 +89,7 @@ public class Jogador extends Pessoa{
         try {
             con = Conexao.conecta();
             Statement stmt = con.createStatement();
-            String sql = "UPDATE jogador SET habilidade = "+this.velocidade+" where id = "+id+";";
+            String sql = "UPDATE jogador SET velocidade = "+this.velocidade+" where id = "+id+";";
             stmt.executeUpdate(sql);
             
         } catch (Exception e) {
@@ -103,7 +103,7 @@ public class Jogador extends Pessoa{
         try {
             con = Conexao.conecta();
             Statement stmt = con.createStatement();
-            String sql = "UPDATE jogador SET habilidade = "+this.resistencia+" where id = "+id+";";
+            String sql = "UPDATE jogador SET resistencia = "+this.resistencia+" where id = "+id+";";
             stmt.executeUpdate(sql);
             
         } catch (Exception e) {
